@@ -11,6 +11,12 @@ module MyMedium2
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
     config.time_zone = "Asia/Taipei"
+    # 新生成controller或其他東西的時候，不會自動產生下面那些東西(預設會)
+    config.generators do |g|
+      g.assets false
+      g.helper false
+      g.test_framework false
+    end
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
