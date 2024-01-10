@@ -57,9 +57,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_03_031801) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "delete_at"
+    t.datetime "deleted_at"
     t.string "slug"
-    t.index ["delete_at"], name: "index_stories_on_delete_at"
+    t.index ["deleted_at"], name: "index_stories_on_deleted_at"
     t.index ["slug"], name: "index_stories_on_slug", unique: true
     t.index ["user_id"], name: "index_stories_on_user_id"
   end

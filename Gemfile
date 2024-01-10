@@ -17,6 +17,7 @@ gem 'webpacker', '~> 5.4', '>= 5.4.4'
 # gem 'jsbundling-rails', '~> 1.2', '>= 1.2.1'
 # gem 'sass', '~> 3.7', '>= 3.7.4'
 gem 'sass-rails', '~> 6.0'
+gem 'paranoia', '~> 2.6', '>= 2.6.3'
 
 
 # Use sqlite3 as the database for Active Record
