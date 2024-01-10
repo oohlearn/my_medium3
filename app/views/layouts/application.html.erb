@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyMedium2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= javascript_pack_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body>
+    <div class="container">
+      <%= render "shared/frontend/navbar" %>
+      <%= render "shared/frontend/flash" if notice %>
+      <%= yield %>  
+      <!-- 將yield包進去公版裡，container有些格式上的設定 -->
+    </div>
+    
+  </body>
+</html>
