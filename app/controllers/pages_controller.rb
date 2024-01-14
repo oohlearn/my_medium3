@@ -6,6 +6,8 @@ class PagesController < ApplicationController
 
     def show
         @user = User.find_by(username: params[:username])
+        @comment = @story.comments.new
+        @comments = @story.comments.order(id: :desc)
       end
     
 
