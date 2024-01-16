@@ -2,12 +2,28 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }
+
+  namespace :api do
+  # 將相關的路徑放在一起，也可再加一層版本號
+  # namespace :V2 do，這樣只要改路徑，整個版本號就可以直接更新
+    resources :users, only: [] do
+      member do
+        post :follow
+      end
+    end
+
+    resources :stories do 
+      member do
+        post :clap
+      end
+    end
+
+  end
+
+
   # 告訴他，我有自己客製化的，不要用內建預設的
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :stories do 
-    member do
-      post :clap
-    end
     resources :comments, only: [:create]
   end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
