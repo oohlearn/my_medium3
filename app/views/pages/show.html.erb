@@ -14,8 +14,11 @@
         <%= simple_format(@story.content) %>
       </p>
 
-      <footer>
-        拍手 0
+      <footer data-controller="story">
+        <%= link_to "#", class: "clapButton is-size-2 has-text-primary", data: {action: "story#addClap", slug: @story.slug } do %>
+          <i class="fa-regular fa-hand-spock"></i>
+          <span id="clapCount" class="clapCount" data-target="story.clapCount"><%= @story.clap %></span>
+        <% end %>
       </footer>
     </article>
     <hr>

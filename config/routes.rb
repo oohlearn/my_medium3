@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # 告訴他，我有自己客製化的，不要用內建預設的
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :stories do 
+    member do
+      post :clap
+    end
     resources :comments, only: [:create]
   end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
