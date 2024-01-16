@@ -11,7 +11,7 @@ import { Controller } from "stimulus";
 import axios from "axios";
 
 export default class extends Controller {
-  static targets = ["followButton"];
+  static targets = ["followButton", "bookmark"];
 
   follow(event) {
     event.preventDefault();
@@ -35,5 +35,10 @@ export default class extends Controller {
         console.log(error);
       });
     console.log(user);
+  }
+
+  bookmark(event) {
+    event.preventDefault();
+    console.log("ok");
   }
 }
