@@ -2,6 +2,10 @@
 
 price_vip: "10"
 price_platinum: "20"
+
+braintree_merchant_id: "rqcz3q7wvqjs8myy"
+braintree_public_key: "hqygyhgzq8gsnyry"
+braintree_private_key: "0ba734de29ae85cebab97ff96dc974a4"
 # pusher_app_id: "2954"
 # pusher_key: 7381a978f7dd7f9a1117
 # pusher_secret: abdc3b896a0ffb85d373

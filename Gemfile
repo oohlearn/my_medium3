@@ -62,6 +62,9 @@ group :development, :test do
 end
 gem 'figaro', '~> 1.2'
 
+gem "braintree", "~> 4.18.0"
+
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"

@@ -17,3 +17,22 @@
 </div>
 
 <script src="https://js.braintreegateway.com/web/dropin/1.42.0/js/dropin.min.js"></script>
+<button id="submit-button">Request payment method</button>
+
+<div id="dropin-container"></div>
+      <!-- Step one: add an empty container to your page -->
+<script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", functions(event){
+        var button = document.querySelector("#submit-button");
+        braintree.dropin.create({
+          authorization: "<%= @token %>",
+          container: document.getElementById('dropin-container')},
+          function(createErr, instance){
+            button.addEventListener("click", function(event){
+              event.preventDefault()
+              instance.requestPaymentMethod(function(err, payload){
+              })
+            })
+          })
+      })
+</script>
