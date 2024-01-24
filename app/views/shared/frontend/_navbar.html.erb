@@ -34,9 +34,10 @@
             <%= link_to "新增故事" , new_story_path, class:"navbar-item" %>
             <%= link_to "故事列表" , stories_path, class:"navbar-item" %>
           <hr class="navbar-divider">
+          <%= link_to "會員升級" , pricing_users_path , class:"navbar-item" unless current_user.paid_user? %>
           <%= link_to "個人資料" , edit_user_registration_path, data:"get", class:"navbar-item" %>
           <hr class="navbar-divider">
-          <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "確定是否登出" }, class: "navbar-item"%>
+          <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: "delete", turbo_confirm: "確定是否登出" }, class: "navbar-item"%>
           </div>
         </div>
           <% else %>

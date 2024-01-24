@@ -20,6 +20,7 @@
     "@babel/plugin-transform-runtime": "^7.23.7",
     "babel-plugin-dynamic-import-node": "^2.3.3",
     "babel-plugin-macros": "^3.1.0",
+    "froala-editor": "^4.1.4",
     "webpack-dev-server": "^3"
   }
 }

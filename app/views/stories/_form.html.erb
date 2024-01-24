@@ -5,7 +5,7 @@
     </div>
 <% end %>
 
-<%= form_for(story) do |form| %>
+<%= form_for(story, html: {class: "story-editor"}) do |form| %>
     <div class="field">
         <%= image_tag story.cover_image, class: "cover_image" if story.cover_image.attached? %>
         <div>
@@ -23,9 +23,15 @@
         <%= form.text_area :content , rows: 10, class: "textarea is-primary is-medium" %>
     </div>
     <div class="field">
-        <%= form.submit "儲存草稿",class: "button is-medium", name: "save_as_draft" %>
+        <% if story.published? %>
+          <%= form.submit "更新",class: "button is-medium", name: "save_as_draft" %>
+        <% else %>
+          <%= form.submit "儲存草稿",class: "button is-medium", name: "save_as_draft" %>
+        <% end %>
         <%= form.submit "發布文章",class: "button is-medium is-primary",  name: "publish"  if story.may_publish? %>
         <%= form.submit "文章下架",class: "button is-medium is-danger",  name: "unpublish"  if story.may_unpublish? %>
 
     </div>
 <% end %>
+
+<%= javascript_pack_tag "editor" %>

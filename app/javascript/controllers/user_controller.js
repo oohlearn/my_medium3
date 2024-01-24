@@ -21,7 +21,7 @@ export default class extends Controller {
     axios
       .post(`/api/users/${user}/follow`)
       .then(function (response) {
-        let status = response.data.stauts;
+        let status = response.data.status;
         switch (status) {
           case "sign_in_first":
             alert("你必須先登入");
@@ -39,6 +39,25 @@ export default class extends Controller {
 
   bookmark(event) {
     event.preventDefault();
+    let link = event.currentTarget;
+    let slug = link.dataset.slug;
+    let icon = this.bookmarkTarget
+      .post(`/api/stories/${slug}/bookmark`)
+      .then(function (response) {
+        switch (response.data.status) {
+          case "Bookmarked":
+            icon.classList.add("fas");
+            icon.classList.remove("far");
+            break;
+          case "Unbookmarked":
+            icon.classList.add("far");
+            icon.classList.remove("fas");
+            break;
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     console.log("ok");
   }
 }

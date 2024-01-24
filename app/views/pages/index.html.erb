@@ -87,7 +87,7 @@
           <footer>
             <p>
               <%= link_to story.user.username, user_page_path(story.user.username), class:"has-text-grey-dark" %>
-              | 最後編輯時間： <%= time_ago_in_words(story.created_at) %>
+              | 最後編輯時間： <%= time_ago_in_words(story.updated_at) %>
             </p>
           </footer>
         </div>

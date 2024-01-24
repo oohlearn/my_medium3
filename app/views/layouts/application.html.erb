@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <%= turbo_frame_tag :turbo_stream %>
     <div class="container">
       <%= render "shared/frontend/navbar" %>
       <%= render "shared/frontend/flash" if notice %>

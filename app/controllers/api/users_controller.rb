@@ -5,6 +5,10 @@ class Api::UsersController < Api::BaseController
         render json: {status: current_user.follow!(@user)}
     end
 
+
+
+    
+
     private
     def find_user
         @user = User.find(params[:id])
