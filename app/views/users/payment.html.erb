@@ -9,30 +9,49 @@
       <div class="content">
         <strong><%= @payment_type %> (USD <%= @fee %>)</span>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+          Lorem ipsum dolor.
         </p>
       </div>
+      <head>
+        <meta charset="utf-8" />
+        <script src="https://js.braintreegateway.com/web/dropin/1.42.0/js/dropin.min.js"></script>
+      </head>
+      
+      <%= form_with url: pay_users_path(type: params[:type]), id: "pay_form", method: "post", local: true do |form| %>
+        <%= form.hidden_field :payment_nonce %>
+        <div id="dropin-container"></div>
+        <%= link_to "重新選擇方案", pricing_users_path, class: "button is-light" %>
+        <button id="submit-button" class="button is-danger">付錢</button>
+      <% end %>
     </div>
+   
+
   </article>
 </div>
 
-<script src="https://js.braintreegateway.com/web/dropin/1.42.0/js/dropin.min.js"></script>
-<button id="submit-button">Request payment method</button>
 
-<div id="dropin-container"></div>
-      <!-- Step one: add an empty container to your page -->
-<script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", functions(event){
-        var button = document.querySelector("#submit-button");
-        braintree.dropin.create({
-          authorization: "<%= @token %>",
-          container: document.getElementById('dropin-container')},
-          function(createErr, instance){
-            button.addEventListener("click", function(event){
-              event.preventDefault()
-              instance.requestPaymentMethod(function(err, payload){
-              })
-            })
-          })
-      })
+
+
+<script>
+  document.addEventListener("turbolinks:load", function(event){
+    const button = document.querySelector("#submit-button");
+    let nonce_field = document.querySelector("input[name= 'payment_nonce']")
+    let form = document.querySelector("#pay_form")
+    braintree.dropin.create({
+      authorization: TOKEN,
+      container: '#dropin-container'
+    }, (error, instance) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        instance.requestPaymentMethod( (err, payload) => {
+          nonce_field.value = payload.nonce;
+          form.submit();
+        });
+      });
+    });
+  });
 </script>
+
+
+
+
